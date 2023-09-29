@@ -8,3 +8,7 @@ modules:
           Authorization: "Bearer XXX"
           Foo: Bar
     - \Tests\Helper\CustomRequests
+    - REST:
+        depends: PhpBrowser
+        url: http://laratest
+        shortDebugResponse: 300

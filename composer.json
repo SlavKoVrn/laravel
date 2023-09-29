@@ -23,6 +23,8 @@
         "codeception/codeception": "^4.1 | ^5.0.0-RC2",
         "codeception/module-asserts": "^2.0 | ^3.0",
         "codeception/module-laravel": "^2.1 | ^3.0 | *@dev",
+        "codeception/module-phpbrowser": "^3.0",
+        "codeception/module-rest": "^3.3",
         "facade/ignition": "^2.17",
         "fakerphp/faker": "^1.17",
         "nunomaduro/collision": "^5.10"

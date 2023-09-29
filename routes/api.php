@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,3 +14,5 @@ Route::middleware('auth:api')->get('/user',
 );
 
 Route::post('/upload-files', [TestController::class, 'uploadFiles']);
+
+Route::resource('comment', CommentController::class);
