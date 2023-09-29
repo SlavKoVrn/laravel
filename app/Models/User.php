@@ -105,4 +105,10 @@ class User extends BaseUser
         $this->email_verified_at = $verifiedDate;
         return $this;
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }
