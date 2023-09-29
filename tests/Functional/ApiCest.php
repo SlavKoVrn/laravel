@@ -8,7 +8,7 @@ use Tests\FunctionalTester;
 
 class ApiCest
 {
-    public function getProfileWithoutCredentions(FunctionalTester $I)
+    public function listComments(FunctionalTester $I)
     {
         $I->sendGET('/api/comment');
         $I->seeResponseCodeIs(200);

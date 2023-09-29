@@ -19,7 +19,7 @@ class CommentController extends AbstractController
      */
     public function index()
     {
-        $perPage = 2;
+        $perPage = 20;
         $comments = Comment::with('user')->paginate($perPage);
 
         return response()->json([
