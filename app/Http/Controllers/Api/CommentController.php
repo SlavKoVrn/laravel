@@ -19,7 +19,7 @@ class CommentController extends AbstractController
      */
     public function index(Request $request)
     {
-        $comments = Comment::with('user')
+        $comments = Comment::with(['user','likes'])
             ->paginate($request->get('per_page'));
 
         return response()->json([
