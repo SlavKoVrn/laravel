@@ -65,19 +65,25 @@ final class EloquentCest
     public function haveRecord(FunctionalTester $I)
     {
         $emails = [
-            'users' => 'bonnie@gmail.com',
-            User::class => 'clyde@gmail.com'
+            [
+                'table'=>User::class,
+                'email'=>'bonnie@gmail.com',
+            ],
+            [
+                'table'=>User::class,
+                'email'=>'clyde@gmail.com',
+            ],
         ];
 
-        foreach ($emails as $table => $email) {
-            $I->haveRecord($table, [
+        foreach ($emails as $table_email) {
+            $I->haveRecord($table_email['table'], [
                 'name' => 'John Doe',
-                'email' => $email,
+                'email' => $table_email['email'],
                 'password' => 'password',
                 'created_at' => '',
                 'updated_at' => ''
             ]);
-            $I->seeRecord($table, ['email' => $email]);
+            $I->seeRecord($table_email['table'], ['email' => $table_email['email']]);
         }
     }
 

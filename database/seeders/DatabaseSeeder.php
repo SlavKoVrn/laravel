@@ -12,7 +12,7 @@ final class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->truncateTables(['users']);
+        //$this->truncateTables(['users']);
         $this->call(UserSeeder::class);
     }
 
