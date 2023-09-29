@@ -17,10 +17,10 @@ class CommentController extends AbstractController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $perPage = 20;
-        $comments = Comment::with('user')->paginate($perPage);
+        $comments = Comment::with('user')
+            ->paginate($request->get('per_page'));
 
         return response()->json([
             "success" => true,

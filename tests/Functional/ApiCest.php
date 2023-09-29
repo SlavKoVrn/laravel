@@ -14,4 +14,24 @@ class ApiCest
         $I->seeResponseCodeIs(200);
     }
 
+    public function testPagination(FunctionalTester $I)
+    {
+        $pageNumber = 2;
+        $perPage = 10;
+
+        $I->sendGET('/api/comment', [
+            'page' => $pageNumber,
+            'per_page' => $perPage
+        ]);
+
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseIsJson();
+
+        $responseData = $I->grabResponse();
+        $response = json_decode($responseData);
+
+        $I->assertEquals($pageNumber, $response->data->current_page);
+        $I->assertEquals($perPage, $response->data->per_page);
+    }
+
 }
