@@ -39,9 +39,11 @@ class CommentController extends AbstractController
         $qb->select([
             'comments.id as comment_id',
             'title',
-            'comments.user_id',
             'comments.created_at',
-            'comments.updated_at'
+            'comments.updated_at',
+            'comments.user_id',
+            'users.name',
+            'users.email',
         ])
             ->selectRaw('sum(likes.code) AS likes_code')
             ->join('users', 'users.id', '=', 'comments.user_id')
