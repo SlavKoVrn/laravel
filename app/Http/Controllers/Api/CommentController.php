@@ -22,7 +22,7 @@ class CommentController extends AbstractController
     {
         $input = $request->all();
         $rules = [
-            'sort' => 'nullable|in:user_id,-user_id,create_at,-create_at,max_count_likes_code,-max_count_likes_code',
+            'sort' => 'nullable|in:user_id,-user_id,create_at,-create_at,likes_code,-likes_code',
         ];
 
         $validator = Validator::make($input, $rules);
@@ -43,7 +43,7 @@ class CommentController extends AbstractController
             'comments.created_at',
             'comments.updated_at'
         ])
-            ->selectRaw('MAX(likes.code) * COUNT(likes.code) AS max_count_likes_code')
+            ->selectRaw('sum(likes.code) AS likes_code')
             ->join('users', 'users.id', '=', 'comments.user_id')
             ->join('likes', 'comments.id', '=', 'likes.comment_id')
             ->groupBy('comments.id');

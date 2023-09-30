@@ -24,7 +24,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
+            'user_id' => random_int(1,100),
             'title' => $this->faker->realText(22),
             'content' => $this->faker->realText(1000),
             'created_at' => now(),

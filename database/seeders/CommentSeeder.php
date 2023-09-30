@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Comment;
-
+use Illuminate\Database\DatabaseManager as DB;
 use Illuminate\Database\Seeder;
 
 class CommentSeeder extends Seeder
@@ -15,6 +15,9 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
+        $database = app()->get(DB::class);
+        $database->table('comments')->truncate();
+
         Comment::factory()
             ->count(100)
             ->create();

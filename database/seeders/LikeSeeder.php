@@ -6,6 +6,7 @@ use App\Models\Like;
 use App\Models\User;
 use App\Models\Comment;
 
+use Illuminate\Database\DatabaseManager as DB;
 use Illuminate\Database\Seeder;
 use Faker\Factory;
 
@@ -18,19 +19,22 @@ class LikeSeeder extends Seeder
      */
     public function run()
     {
+        $database = app()->get(DB::class);
+        $database->table('likes')->truncate();
+
         $faker = Factory::create();
 
         $comments = Comment::all();
+        $users = User::all();
 
         foreach ($comments as $comment) {
-            $users = User::inRandomOrder()->limit(10)->get();
-
             foreach ($users as $user) {
                 Like::create([
                     'comment_id' => $comment->id,
                     'user_id' => $user->id,
                     'code' => $faker->randomDigit(),
                 ]);
+                echo "$comment->id - $user->id\n";
             }
         }
     }
