@@ -7,6 +7,33 @@
 
 #### без фронта, только через апи
 
+## Установка
+
+1. клонировать репозиторий:
+   ```shell
+   git clone https://github.com/SlavKoVrn/laravel
+   ```
+2. установка composer библиотек:
+   ```shell
+   composer update
+   ```
+3. установка javascript библиотек:
+   ```shell
+   npm install
+   npm run dev
+   ```
+4. после установки базы данных заполнение фейков:
+   ```shell
+   php artisan db:seed --class=UserSeeder
+   php artisan db:seed --class=CommentSeeder
+   php artisan db:seed --class=LikeSeeder
+   ```
+5. запуск тестов:
+   ```shell
+   php vendor/bin/codecept build
+   php vendor/bin/codecept run -- tests/Functional/ApiCest
+   ```
+
 # Codeception Laravel Module Tests
 
 [![Actions Status](https://github.com/Codeception/laravel-module-tests/workflows/CI/badge.svg)](https://github.com/Codeception/laravel-module-tests)
