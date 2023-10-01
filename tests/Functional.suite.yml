@@ -10,5 +10,5 @@ modules:
     - \Tests\Helper\CustomRequests
     - REST:
         depends: PhpBrowser
-        url: http://laratest
+        url: http://laravel
         shortDebugResponse: 300

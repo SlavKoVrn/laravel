@@ -15,20 +15,44 @@
    ```
 2. установка composer библиотек:
    ```shell
-   composer update
+   composer install
    ```
 3. установка javascript библиотек:
    ```shell
    npm install
    npm run dev
    ```
-4. после установки базы данных заполнение фейков:
+4. сгенерировать ключ безопасности приложения:
    ```shell
+   php artisan key:generate
+   ```
+5. установка базы данных:
+   ```shell
+   cp .env.example .env
+
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=db_laravel
+   DB_USERNAME=root
+   DB_PASSWORD=password
+   
+6. заполнить базу фейками:
+   ```shell
+   php artisan migrate
    php artisan db:seed --class=UserSeeder
    php artisan db:seed --class=CommentSeeder
    php artisan db:seed --class=LikeSeeder
    ```
-5. запуск тестов:
+7. прописать установленный домен для тестов:
+   ```shell
+   tests/Functional.suite.yml
+
+    - REST:
+        depends: PhpBrowser
+        url: http://laravel 
+   ```
+8. запуск тестов:
    ```shell
    php vendor/bin/codecept build
    php vendor/bin/codecept run -- tests/Functional/ApiCest
